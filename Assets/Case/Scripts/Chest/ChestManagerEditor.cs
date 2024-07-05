@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(MeshValidPointHelper))]
-public class MeshValidPointHelperEditor : Editor
+[CustomEditor(typeof(ChestManager))]
+public class ChestManagerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        MeshValidPointHelper pointFinder = (MeshValidPointHelper)target;
+        ChestManager pointFinder = (ChestManager)target;
 
         if (GUILayout.Button("Find Valid Surface Points"))
         {
-            pointFinder.FindValidSurfacePoint();
+            pointFinder.FindValidSurfacePoints();
             Debug.Log("Found " + pointFinder.ValidPoints.Count + " valid points.");
         }
 
