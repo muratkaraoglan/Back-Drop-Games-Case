@@ -16,4 +16,5 @@ MonoBehaviour:
   ItemData:
     ItemName: Shovel
     ItemIcon: {fileID: 0}
-    ItemPrefab: {fileID: 0}
+    ItemPrefab: {fileID: 4966998816894328654, guid: 8fd1447964b81314a88914dfd86e5bb0,
+      type: 3}

@@ -6,6 +6,15 @@ using UnityEngine;
 public class ItemManager : Singleton<ItemManager>
 {
     [SerializeField] private List<ItemSO> _items;
+
+    [SerializeField, Tooltip("Camera z offset for drop")] private float _itemSpawnZOffset = 3;
+
+    private Camera _mainCamera;
+
+    private void Start()
+    {
+        _mainCamera = Camera.main;
+    }
     public List<string> CreateRandomNewItems(int itemCount)
     {
         List<string> items = new List<string>();
@@ -20,6 +29,16 @@ public class ItemManager : Singleton<ItemManager>
     public ItemData GetItemData(string itemID)
     {
         return _items.Find(i => i.ItemID == itemID).ItemData;
+    }
+
+
+    public void DropItem(string itemID, Vector3 mousePosition)
+    {
+        mousePosition.z = _itemSpawnZOffset;
+        Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
+        ItemData itemData = GetItemData(itemID);
+
+        Instantiate(itemData.ItemPrefab, worldPosition, Random.rotation).GetComponent<Item>().ItemId = itemID;
     }
 }
 

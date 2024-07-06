@@ -16,4 +16,5 @@ MonoBehaviour:
   ItemData:
     ItemName: Bottle Large
     ItemIcon: {fileID: 0}
-    ItemPrefab: {fileID: 0}
+    ItemPrefab: {fileID: 3961078457919954200, guid: 5f795afc39f1799489e63ec6ed74fb62,
+      type: 3}

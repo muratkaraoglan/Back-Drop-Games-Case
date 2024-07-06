@@ -16,4 +16,5 @@ MonoBehaviour:
   ItemData:
     ItemName: Pirate Sword
     ItemIcon: {fileID: 0}
-    ItemPrefab: {fileID: 0}
+    ItemPrefab: {fileID: 7401969185020630267, guid: 6664f34b17d76e34aad04395daba14fd,
+      type: 3}

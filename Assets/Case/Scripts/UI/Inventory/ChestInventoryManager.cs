@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ChestInventoryManager : MonoBehaviour, IInventory
 {
-    [SerializeField] private InventorySlot _inventorySlotPrefab;
+
     [SerializeField] private Transform _inventorySlotParent;
     private List<string> _itemIds;
     private Chest _currentChest;
@@ -18,7 +18,7 @@ public class ChestInventoryManager : MonoBehaviour, IInventory
         _itemIds = _currentChest.GetItemIds();
         for (int i = 0; i < _itemIds.Count; i++)
         {
-            Instantiate(_inventorySlotPrefab, _inventorySlotParent).Initialize(this, _itemIds[i]);
+            Instantiate(UIManager.Instance.SlotPrefab, _inventorySlotParent).Initialize(this, _itemIds[i]);
         }
     }
 

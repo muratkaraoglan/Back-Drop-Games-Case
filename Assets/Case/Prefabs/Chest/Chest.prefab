@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemIds: []
-  _interactionPrompt: Press F to Open Chest
+  _interactionPrompt: Press F to Interact
 --- !u!65 &8695895918847225620
 BoxCollider:
   m_ObjectHideFlags: 0

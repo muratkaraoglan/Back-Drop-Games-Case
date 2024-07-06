@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputReader : Singleton<InputReader>, PlayerInputActions.IPlayerActions
 {
     public event Action OnPressInteractButtonEvent = () => { };
+    public event Action OnInventoryButtonPressed= () => { };
 
     [field: SerializeField] public Vector2 MoveInput { get; private set; }
     [field: SerializeField] public Vector2 LookInput { get; private set; }
@@ -20,7 +21,12 @@ public class InputReader : Singleton<InputReader>, PlayerInputActions.IPlayerAct
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.SetCallbacks(this);
         _playerInputActions.Player.Enable();
-        SetCursorState(true);
+        Cursor.lockState = CursorLockMode.Confined;
+        SetCursorState(false);
+    }
+    public void SetCursorState(bool newState)
+    {
+        Cursor.visible= newState;        
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -44,8 +50,8 @@ public class InputReader : Singleton<InputReader>, PlayerInputActions.IPlayerAct
         MoveInput = context.ReadValue<Vector2>();
     }
 
-    public void SetCursorState(bool newState)
+    public void OnInventory(InputAction.CallbackContext context)
     {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        if (context.performed) OnInventoryButtonPressed.Invoke();
     }
 }

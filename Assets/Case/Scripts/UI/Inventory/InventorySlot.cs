@@ -12,7 +12,6 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField] private TextMeshProUGUI _itemNameText;
     private Image _raycastTarget;
     private Canvas _canvas;
-    private Transform _originalParent;
     private ItemData _itemData;
     private string _itemID;
     private IInventory _currentInventory;
@@ -33,7 +32,6 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _originalParent = transform.parent;
         transform.SetParent(_canvas.transform, true);
         _onDragBeginEndEvent.Raise(false);
         _currentInventory.RemoveFromInventory(_itemID);

@@ -31,6 +31,7 @@ public class ChestManager : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     public void FindValidSurfacePoints()
     {
         _validPoints = new List<Vector3>();
@@ -74,10 +75,8 @@ public class ChestManager : MonoBehaviour
                 }
             }
 
-
         }
     }
-
 
     public List<Vector3> ValidPoints => _validPoints;
     bool IsObjectAbove(Vector3 position)
@@ -93,5 +92,5 @@ public class ChestManager : MonoBehaviour
             Debug.DrawLine(point, point + Vector3.up * 10, Color.red, 10f);
         }
     }
-
+#endif
 }

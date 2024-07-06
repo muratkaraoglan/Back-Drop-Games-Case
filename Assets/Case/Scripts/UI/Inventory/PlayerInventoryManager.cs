@@ -20,8 +20,10 @@ public class PlayerInventoryManager : MonoBehaviour, IInventory
     {
         if (pointerEvent.pointerEnter == null)
         {
-            _itemIds.Add(itemID);
-            slot.transform.SetParent(_inventorySlotParent, true);
+            //_itemIds.Add(itemID);
+            //slot.transform.SetParent(_inventorySlotParent, true);
+            Destroy(slot.gameObject);
+            ItemManager.Instance.DropItem(itemID, Input.mousePosition);
             return;
         }
         pointerEvent.pointerEnter.TryGetComponent(out IInventory inventory);
@@ -34,5 +36,15 @@ public class PlayerInventoryManager : MonoBehaviour, IInventory
     public void RemoveFromInventory(string id)
     {
         _itemIds.Remove(id);
+    }
+
+    public void CollectItem(string itemID)
+    {
+        ItemData itemData = ItemManager.Instance.GetItemData(itemID);
+
+        if (itemData != null)
+        {
+            Instantiate(UIManager.Instance.SlotPrefab, _inventorySlotParent).Initialize(this, itemID);
+        }
     }
 }

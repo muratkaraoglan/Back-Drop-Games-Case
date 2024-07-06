@@ -16,4 +16,5 @@ MonoBehaviour:
   ItemData:
     ItemName: Sword
     ItemIcon: {fileID: 0}
-    ItemPrefab: {fileID: 0}
+    ItemPrefab: {fileID: 4662826790010784896, guid: 2458bf0a1aaf2b34ea0e6b4f7dcf81ab,
+      type: 3}
