@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ChestManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _chestPrefab;
-    [SerializeField, Range(1, 20)] private int _nuberOfChest;
+
+    [Header("Chest Initialize")]
+    [SerializeField] private Chest _chestPrefab;
+    [SerializeField, Range(1, 20)] private int _numberOfChest;
+    [SerializeField, Min(0)] private int _maxItemCountInChest = 5;
 
     [Header("Valid Points")]
     [SerializeField] private List<MeshFilter> _chestSpawnFieldMeshFilters;
@@ -21,9 +24,10 @@ public class ChestManager : MonoBehaviour
     private void Start()
     {
         _validPoints.Shuffle();
-        for (int i = 0; i < _nuberOfChest; i++)
+        for (int i = 0; i < _numberOfChest; i++)
         {
-            Instantiate(_chestPrefab, _validPoints[i], Quaternion.identity);
+            Chest chest = Instantiate(_chestPrefab, _validPoints[i], Quaternion.identity);
+            chest.SetItems(ItemManager.Instance.CreateRandomNewItems(Random.Range(1, _maxItemCountInChest)));
         }
     }
 

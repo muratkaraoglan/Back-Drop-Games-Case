@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-8)]
 public class InputReader : Singleton<InputReader>, PlayerInputActions.IPlayerActions
 {
+    public event Action OnPressInteractButtonEvent = () => { };
+
     [field: SerializeField] public Vector2 MoveInput { get; private set; }
     [field: SerializeField] public Vector2 LookInput { get; private set; }
     [field: SerializeField] public bool JumpInput { get; set; }
@@ -22,7 +25,8 @@ public class InputReader : Singleton<InputReader>, PlayerInputActions.IPlayerAct
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-
+        if (!context.performed) return;
+        OnPressInteractButtonEvent.Invoke();
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -40,7 +44,7 @@ public class InputReader : Singleton<InputReader>, PlayerInputActions.IPlayerAct
         MoveInput = context.ReadValue<Vector2>();
     }
 
-    private void SetCursorState(bool newState)
+    public void SetCursorState(bool newState)
     {
         Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }

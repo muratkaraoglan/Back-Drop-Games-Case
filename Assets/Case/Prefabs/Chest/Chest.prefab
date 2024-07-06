@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3258705810601627429}
   - component: {fileID: 7089251172897175310}
   - component: {fileID: 8695895918847225620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735db7d457849a74892575ae9d3b7107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemIds: []
+  _interactionPrompt: Press F to Open Chest
 --- !u!65 &8695895918847225620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -234,5 +236,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4, y: 0.6182439, z: 1.4}
+  m_Size: {x: 0.7, y: 0.6182439, z: 0.7}
   m_Center: {x: 0, y: 0.30912194, z: 0}

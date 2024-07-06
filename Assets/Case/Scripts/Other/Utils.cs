@@ -25,4 +25,12 @@ public  static class Utils
         }
     }
 
+    public static void DestroyAllChildren(this Transform target)
+    {
+        for (int i = target.childCount - 1; i >= 0; i--)
+        {
+            GameObject.Destroy(target.GetChild(i).gameObject);
+        }
+    }
+
 }
