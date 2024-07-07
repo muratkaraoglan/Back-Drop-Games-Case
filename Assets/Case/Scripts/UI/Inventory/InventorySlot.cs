@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private Animator _animator;
     [SerializeField] private OnDragBeginEndEvent _onDragBeginEndEvent;
     [SerializeField] private Image _itemImage;
     [SerializeField] private TextMeshProUGUI _itemNameText;
@@ -55,4 +56,5 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void ChangeInventory(IInventory inventory) => _currentInventory = inventory;
 
+    public void SetAnimatorState(bool state) => _animator.enabled = state;
 }

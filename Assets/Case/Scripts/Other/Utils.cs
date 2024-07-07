@@ -33,4 +33,18 @@ public  static class Utils
         }
     }
 
+    private static readonly Dictionary<float, WaitForSeconds> waitMap = new Dictionary<float, WaitForSeconds>();
+
+    public static WaitForSeconds GetWaitForSeconds(float duration)
+    {
+        if (waitMap.TryGetValue(duration, out WaitForSeconds waitForSeconds))
+        {
+            return waitForSeconds;
+        }
+
+        waitMap.Add(duration, new WaitForSeconds(duration));
+
+        return waitMap[duration];
+    }
+
 }

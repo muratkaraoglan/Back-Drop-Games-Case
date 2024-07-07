@@ -12,6 +12,7 @@ public class PlayerInventoryManager : MonoBehaviour, IInventory
     public void ChangeInventory(string itemId, InventorySlot slot)
     {
         _itemIds.Add(itemId);
+        slot.SetAnimatorState(false);
         slot.ChangeInventory(this);
         slot.transform.SetParent(_inventorySlotParent, true);
     }
@@ -42,7 +43,9 @@ public class PlayerInventoryManager : MonoBehaviour, IInventory
 
         if (itemData != null)
         {
-            Instantiate(UIManager.Instance.SlotPrefab, _inventorySlotParent).Initialize(this, itemID);
+            InventorySlot slot = Instantiate(UIManager.Instance.SlotPrefab, _inventorySlotParent);
+            slot.SetAnimatorState(false);
+            slot.Initialize(this, itemID);
         }
     }
 }

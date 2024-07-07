@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ChestInventoryManager : MonoBehaviour, IInventory
 {
-
     [SerializeField] private Transform _inventorySlotParent;
+    [SerializeField] private float _nextItemSpawnDuration = .2f;
     private List<string> _itemIds;
     private Chest _currentChest;
 
@@ -16,9 +16,17 @@ public class ChestInventoryManager : MonoBehaviour, IInventory
         _inventorySlotParent.DestroyAllChildren();
         _currentChest = chest;
         _itemIds = _currentChest.GetItemIds();
-        for (int i = 0; i < _itemIds.Count; i++)
+        StartCoroutine(InstantiateAnimation());
+    }
+
+    IEnumerator InstantiateAnimation()
+    {
+        int i = 0;
+        while (i < _itemIds.Count)
         {
             Instantiate(UIManager.Instance.SlotPrefab, _inventorySlotParent).Initialize(this, _itemIds[i]);
+            yield return Utils.GetWaitForSeconds(_nextItemSpawnDuration);
+            i++;
         }
     }
 
