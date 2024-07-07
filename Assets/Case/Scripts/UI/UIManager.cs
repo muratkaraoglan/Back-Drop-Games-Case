@@ -12,6 +12,8 @@ public class UIManager : Singleton<UIManager>
     [Header("Player Inventory")]
     [SerializeField] private PlayerInventoryManager _playerInventoryManager;
     [SerializeField] private GameObject _playerInventoryParent;
+    [Space(10)]
+    [SerializeField] private GameObject _playerItemSlotParentGO;
 
     private void OnEnable()
     {
@@ -26,6 +28,7 @@ public class UIManager : Singleton<UIManager>
     {
         bool isInventoryOpen = _playerInventoryParent.activeSelf;
         _playerInventoryParent.SetActive(!isInventoryOpen);
+        _playerItemSlotParentGO.SetActive(!isInventoryOpen);
         InputReader.Instance.SetCursorState(!isInventoryOpen);
         if (isInventoryOpen)
         {
@@ -38,6 +41,7 @@ public class UIManager : Singleton<UIManager>
     {
         _chestInventoryParent.SetActive(true);
         _playerInventoryParent.SetActive(true);
+        _playerItemSlotParentGO.SetActive(true);
         _chestInventoryManager.InitInventory(chest);
         InputReader.Instance.SetCursorState(true);
         InputReader.Instance.OnPressInteractButtonEvent += OnPressInteractButtonEvent;
@@ -47,6 +51,7 @@ public class UIManager : Singleton<UIManager>
     {
         _chestInventoryParent.SetActive(false);
         _playerInventoryParent.SetActive(false);
+        _playerItemSlotParentGO.SetActive(false);
         InputReader.Instance.OnPressInteractButtonEvent -= OnPressInteractButtonEvent;
         InputReader.Instance.SetCursorState(false);
     }

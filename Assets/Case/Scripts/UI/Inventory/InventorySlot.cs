@@ -57,4 +57,6 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void ChangeInventory(IInventory inventory) => _currentInventory = inventory;
 
     public void SetAnimatorState(bool state) => _animator.enabled = state;
+
+    public IInventory CurrentInventory => _currentInventory;
 }

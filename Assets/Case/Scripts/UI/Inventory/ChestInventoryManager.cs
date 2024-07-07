@@ -30,6 +30,13 @@ public class ChestInventoryManager : MonoBehaviour, IInventory
         }
     }
 
+    public void ChangeInventory(string itemId, InventorySlot slot)
+    {
+        _itemIds.Add(itemId);
+        slot.ChangeInventory(this);
+        slot.transform.SetParent(_inventorySlotParent, true);
+    }
+
     public void OnDragEnd(PointerEventData pointerEvent, string itemID, InventorySlot slot)
     {
         if (pointerEvent.pointerEnter == null)
@@ -48,13 +55,6 @@ public class ChestInventoryManager : MonoBehaviour, IInventory
     public void RemoveFromInventory(string id)
     {
         _itemIds.Remove(id);
-    }
-
-    public void ChangeInventory(string itemId, InventorySlot slot)
-    {
-        _itemIds.Add(itemId);
-        slot.ChangeInventory(this);
-        slot.transform.SetParent(_inventorySlotParent, true);
     }
 
     private void OnDisable()

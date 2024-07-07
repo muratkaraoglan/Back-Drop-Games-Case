@@ -19,7 +19,7 @@ public class PlayerInventoryManager : MonoBehaviour, IInventory
 
     public void OnDragEnd(PointerEventData pointerEvent, string itemID, InventorySlot slot)
     {
-        if (pointerEvent.pointerEnter == null)
+        if (pointerEvent.pointerEnter == null)//drop to ground
         {
             Destroy(slot.gameObject);
             ItemManager.Instance.DropItem(itemID, Input.mousePosition);

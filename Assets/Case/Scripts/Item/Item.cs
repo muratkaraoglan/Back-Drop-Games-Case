@@ -21,4 +21,11 @@ public class Item : MonoBehaviour, IInteractable
     {
         InteractionText.Instance.SetInteractionText(GameManager.Instance.CollectibleItemInteractPrompt);
     }
+
+    public void DisableComponents()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Collider>().enabled = false;
+        enabled = false;
+    }
 }
