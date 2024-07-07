@@ -27,7 +27,7 @@ public class ThirdPersonController : PlayerBaseController
             _cinemachineTargetYaw += InputReader.Instance.LookInput.x;
             _cinemachineTargetPitch += InputReader.Instance.LookInput.y;
         }
-        // clamp our rotations so our values are limited 360 degrees
+        // clamp our rotations  360 degrees
         _cinemachineTargetYaw = Utils.ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
         _cinemachineTargetPitch = Utils.ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 

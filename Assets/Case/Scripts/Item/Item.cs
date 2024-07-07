@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Item : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _promp;
-    public string InteractionPrompt => _promp;
     public string ItemId;
 
     public void Interact()
@@ -21,6 +19,6 @@ public class Item : MonoBehaviour, IInteractable
 
     public void PromptTextOn()
     {
-        InteractionText.Instance.SetInteractionText(InteractionPrompt);
+        InteractionText.Instance.SetInteractionText(GameManager.Instance.CollectibleItemInteractPrompt);
     }
 }

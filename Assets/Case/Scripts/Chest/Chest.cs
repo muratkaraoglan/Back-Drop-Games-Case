@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour, IInteractable
 {
-    [SerializeField] private List<string> _itemIds;
-    [SerializeField] private string _interactionPrompt;
+    private List<string> _itemIds;
     bool _isTextOn = false;
-
-    public string InteractionPrompt => _interactionPrompt;
 
     public void SetItems(List<string> itemIDs)
     {
@@ -26,7 +23,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         if (_isTextOn) return;
         _isTextOn = true;
-        InteractionText.Instance.SetInteractionText(InteractionPrompt);
+        InteractionText.Instance.SetInteractionText(GameManager.Instance.ChestInteractPrompt);
     }
 
     public void PrompTextOff()
