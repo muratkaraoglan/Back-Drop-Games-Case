@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,7 @@ public abstract class PlayerBaseController : MonoBehaviour
 
     [Header("Cinemachine")]
     [Tooltip("Follow Target")]
+    public CinemachineVirtualCamera PlayerCamera;
     public GameObject CinemachineCameraTarget;
     public float TopClamp = 90f;
     public float BottomClamp = -90f;
@@ -52,6 +54,7 @@ public abstract class PlayerBaseController : MonoBehaviour
 
     protected const float _threshhold = 0.01f;
 
+ 
     protected virtual void Start()
     {
         _controller = GetComponent<CharacterController>();

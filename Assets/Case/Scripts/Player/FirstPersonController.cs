@@ -1,7 +1,12 @@
+using Cinemachine;
 using UnityEngine;
 
 public class FirstPersonController : PlayerBaseController
 {
+    private void OnEnable()
+    {
+        PlayerCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance = 0;
+    }
 
     protected override void CameraRotation()
     {
@@ -12,6 +17,7 @@ public class FirstPersonController : PlayerBaseController
             _cinemachineTargetPitch += InputReader.Instance.LookInput.y * RotationSpeed;
             _rotationVelocity = InputReader.Instance.LookInput.x * RotationSpeed;
 
+            // clamp our rotation so our values are limited 360 degrees
             _cinemachineTargetPitch = Utils.ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
             CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0f, 0f);
@@ -34,7 +40,7 @@ public class FirstPersonController : PlayerBaseController
             {
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
             }
-
+            // jump timeout
             if (_jumpTimeoutDelta >= 0f)
             {
                 _jumpTimeoutDelta -= Time.deltaTime;
@@ -45,7 +51,6 @@ public class FirstPersonController : PlayerBaseController
             // reset the jump timeout timer
             _jumpTimeoutDelta = JumpTimeout;
 
-            //InputReader.Instance.JumpInput = false;
         }
 
         if (_verticalVelocity < _terminalVelocity)
@@ -60,6 +65,7 @@ public class FirstPersonController : PlayerBaseController
 
         if (InputReader.Instance.MoveInput == Vector2.zero) targetSpeed = 0f;
 
+        //player current horizontal velocity
         float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0f, _controller.velocity.z).magnitude;
 
         float speedOffset = .1f;
