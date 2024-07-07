@@ -46,7 +46,7 @@ public class ChestInventoryManager : MonoBehaviour, IInventory
             return;
         }
         pointerEvent.pointerEnter.TryGetComponent(out IInventory inventory);
-        if (inventory != null)
+        if (inventory != null)//change inventory
         {
             inventory.ChangeInventory(itemID, slot);
         }

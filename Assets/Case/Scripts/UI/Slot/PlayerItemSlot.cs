@@ -36,16 +36,15 @@ public class PlayerItemSlot : MonoBehaviour, IInventory
             return;
         }
         pointerEvent.pointerEnter.TryGetComponent(out IInventory inventory);
-        if (inventory != null && inventory != (IInventory)this)
+        if (inventory != null && inventory != (IInventory)this)//change inventory
         {
-            inventory.ChangeInventory(itemID, slot);
             _slot = null;
+            inventory.ChangeInventory(itemID, slot); 
             Destroy(_itemRefPointOnPlayer.GetChild(0).gameObject);
             return;
         }
         slot.transform.SetParent(transform, true);
         slot.transform.localPosition = Vector3.zero;
-
     }
 
     public void RemoveFromInventory(string id)
