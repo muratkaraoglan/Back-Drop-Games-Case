@@ -55,4 +55,7 @@ public class UIManager : Singleton<UIManager>
     {
         _playerInventoryManager.CollectItem(itemID);
     }
+
+    public bool AnyChestOpen => _chestInventoryParent.activeSelf;
+    public bool IsPlayerInventoryOpen => _playerInventoryParent.activeSelf;
 }

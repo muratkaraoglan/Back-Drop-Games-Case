@@ -5,6 +5,7 @@ public class FirstPersonController : PlayerBaseController
 
     protected override void CameraRotation()
     {
+        if (UIManager.Instance.AnyChestOpen || UIManager.Instance.IsPlayerInventoryOpen) return;
         //if there is and input
         if (InputReader.Instance.LookInput.sqrMagnitude >= _threshhold)
         {

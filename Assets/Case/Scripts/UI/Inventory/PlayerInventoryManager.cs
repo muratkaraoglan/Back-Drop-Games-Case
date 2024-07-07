@@ -20,8 +20,6 @@ public class PlayerInventoryManager : MonoBehaviour, IInventory
     {
         if (pointerEvent.pointerEnter == null)
         {
-            //_itemIds.Add(itemID);
-            //slot.transform.SetParent(_inventorySlotParent, true);
             Destroy(slot.gameObject);
             ItemManager.Instance.DropItem(itemID, Input.mousePosition);
             return;

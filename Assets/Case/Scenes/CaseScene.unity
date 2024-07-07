@@ -439,7 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -692,7 +692,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c5e82b9c0c979d84ba7f3f820998d709,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.184
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5e82b9c0c979d84ba7f3f820998d709,
         type: 3}
@@ -2619,6 +2619,7 @@ MonoBehaviour:
   _interactionLayer:
     serializedVersion: 2
     m_Bits: 256
+  _numberOfFound: 0
 --- !u!1 &1310392370
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,6 +3141,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5eb886068efc8524e8641fd64ebc9c17, type: 2}
   - {fileID: 11400000, guid: fc4abc50459779a4d95ce196b2d927a7, type: 2}
   _itemSpawnZOffset: 3
+  _groudnCheckDistance: 5
 --- !u!4 &1504471038
 Transform:
   m_ObjectHideFlags: 0
